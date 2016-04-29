@@ -187,6 +187,7 @@ import sys
 import time
 import optparse
 import subprocess
+import socket
 import numpy as np
 
 from spearmint.utils.database.mongodb import MongoDB
@@ -228,6 +229,7 @@ def launch(db_address, experiment_name, job_id):
 
     start_time        = time.time()
     job['start time'] = start_time
+    job['hostname'] = socket.gethostname()
     db.save(job, experiment_name, 'jobs', {'id' : job_id})
 
     sys.stderr.write("Job launching after %0.2f seconds in submission.\n" 

@@ -1,4 +1,8 @@
 {
+    "database" : {
+        "name"    : "spearmint",
+        "address" : "cymes:27089"
+    },
     "language"        : "PYTHON",
     "main-file"       : "branin.py",
     "experiment-name" : "simple-braninhoo-example",
