@@ -189,13 +189,14 @@ import importlib
 from operator import add
 import numpy as np
 import sys
+import socket
 
 def parse_resources_from_config(config):
     """Parse the config dict and return a dictionary of resource objects keyed by resource name"""
 
     # If the user did not explicitly specify resources
     if "resources" not in config:
-        default_resource_name = 'Main'
+        default_resource_name = 'Main' + socket.gethostname()
         task_names = parse_tasks_in_resource_from_config(config, default_resource_name)
         return {default_resource_name : resource_factory(default_resource_name, task_names, config)}
 

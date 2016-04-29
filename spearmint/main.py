@@ -326,7 +326,8 @@ def remove_broken_jobs(db, jobs, experiment_name, resources):
     if jobs:
         for job in jobs:
             if job['status'] == 'pending':
-                if not resources[job['resource']].isJobAlive(job):
+                if (job['resource'] in resources and 
+                    not resources[job['resource']].isJobAlive(job)):
                     sys.stderr.write('Broken job %s detected.\n' % job['id'])
                     job['status'] = 'broken'
                     save_job(job, db, experiment_name)
