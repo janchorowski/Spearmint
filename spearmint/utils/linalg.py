@@ -184,7 +184,7 @@
 
 
 import numpy as np
-import scipy.weave
+import weave
 import scipy.linalg as spla
 
 # Update Cholesky decomposition to include a single extra
